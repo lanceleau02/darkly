@@ -40,7 +40,6 @@ So, at this point, we can code a little Python script to test all the possibilit
 Many defensive measures can be taken, but here are the main ones:
 
 - **Password Complexity:** Requiring complex, long passwords makes brute-forcing more time-consuming.
-
 - **Account Lockouts:** Locking an account after several failed attempts can thwart brute-force efforts.
 - **Multi-Factor Authentication (MFA):** Adding an additional layer of security (e.g., a verification code sent to the user) can stop a brute-force attack even if a password is successfully guessed.
 - **Rate Limiting and Captchas:** These limit the number of attempts an attacker can make in a given timeframe, slowing down or deterring brute-force attempts.
