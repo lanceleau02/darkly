@@ -37,7 +37,7 @@ So, at this point, we can code a little Python script to test all the possibilit
 
 ## 🔧 Patch
 
-A lot of defense measures can be taken but here are the main ones:
+Many defensive measures can be taken, but here are the main ones:
 
 - **Password Complexity:** Requiring complex, long passwords makes brute-forcing more time-consuming.
 
