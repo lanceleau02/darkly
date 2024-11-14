@@ -50,6 +50,8 @@ hydra -l root -P dictionary -F -V "<ip>" http-get-form '/index.php:page=signin&u
 
 We provide two solutions: a Python and a Bash script.
 
+**script.py**
+
 ```Python
 import requests, sys, subprocess
 
