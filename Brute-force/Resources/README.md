@@ -21,7 +21,7 @@ A **brute-force attack** is a method used to gain unauthorized access to a syste
 ## 🔍 Discovery
 
 On the **Signin** page, we try several `username:password` combinations after realizing that the `username` and `password` are directly filled in the URL in this format: `username=<username>&password=<password>`.
-So, at this point, we can code a little Python script to test all the possibilities with the `root` username. Why with this username? Because we test it first and by chance it was the good one.
+So, at this point, we can code a little Python script to test all the possibilities with the `root` username. Why with this username? Because we test it first and by chance it was the good one. For the dictionary, we use [this one](https://github.com/danielmiessler/SecLists/blob/master/Passwords/Common-Credentials/10-million-password-list-top-1000000.txt) from GitHub.
 
 ## ⚙️ Reproduction
 
@@ -34,5 +34,17 @@ So, at this point, we can code a little Python script to test all the possibilit
 **2. Using the script:**
 
 1. In a terminal, run `python script.py <ip>`
-2. Enter the IP of the website
 
+## 🔧 Patch
+
+A lot of defense measures can be taken but here are the main ones:
+
+- **Password Complexity:** Requiring complex, long passwords makes brute-forcing more time-consuming.
+
+- **Account Lockouts:** Locking an account after several failed attempts can thwart brute-force efforts.
+- **Multi-Factor Authentication (MFA):** Adding an additional layer of security (e.g., a verification code sent to the user) can stop a brute-force attack even if a password is successfully guessed.
+- **Rate Limiting and Captchas:** These limit the number of attempts an attacker can make in a given timeframe, slowing down or deterring brute-force attempts.
+
+Here is a chart to estimate the time it can takes a hacker to brute force your password:
+
+[](https://images.squarespace-cdn.com/content/5ffe234606e5ec7bfc57a7a3/1719499399309-7FRIR5QNH5P4VHC1AGGP/Hive+Systems+Password+Table+-+2024+Rectangular.png?format=1500w&content-type=image%2Fpng)
