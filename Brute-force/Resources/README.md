@@ -1,7 +1,5 @@
 # 💪 Bruteforce
 
----
-
 ## 📖 Definition
 
 A **brute-force attack** is a method used to gain unauthorized access to a system, network, or encrypted data by systematically trying all possible combinations of credentials or keys until the correct one is found. This type of attack relies on sheer computational power and persistence, making it one of the simplest, yet most resource-intensive and time-consuming, attack methods.
@@ -20,14 +18,10 @@ A **brute-force attack** is a method used to gain unauthorized access to a syste
 	- **Dictionary Attack:** Attackers use a predefined list of likely passwords, often based on commonly used passwords or information known about the target.
 	- **Hybrid Attack:** Combines a dictionary attack with variations on each entry, such as adding numbers or symbols to commonly used words.
 
----
-
 ## 🔍 Discovery
 
 On the **Signin** page, we try several `username:password` combinations after realizing that the `username` and `password` are directly filled in the URL in this format: `username=<username>&password=<password>`.
 So, at this point, we can code a little Python script to test all the possibilities with the `root` username. Why with this username? Because we test it first and by chance it was the good one.
-
----
 
 ## ⚙️ Reproduction
 
