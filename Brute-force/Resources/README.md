@@ -45,6 +45,6 @@ A lot of defense measures can be taken but here are the main ones:
 - **Multi-Factor Authentication (MFA):** Adding an additional layer of security (e.g., a verification code sent to the user) can stop a brute-force attack even if a password is successfully guessed.
 - **Rate Limiting and Captchas:** These limit the number of attempts an attacker can make in a given timeframe, slowing down or deterring brute-force attempts.
 
-Here is a chart to estimate the time it can takes a hacker to brute force your password:
+To better understand the importance to have a stong password, here is a chart to estimate the time it takes a hacker to brute force your password in 2024:
 
-[](https://images.squarespace-cdn.com/content/5ffe234606e5ec7bfc57a7a3/1719499399309-7FRIR5QNH5P4VHC1AGGP/Hive+Systems+Password+Table+-+2024+Rectangular.png?format=1500w&content-type=image%2Fpng)
+![](https://images.squarespace-cdn.com/content/5ffe234606e5ec7bfc57a7a3/1719499399309-7FRIR5QNH5P4VHC1AGGP/Hive+Systems+Password+Table+-+2024+Rectangular.png?format=1500w&content-type=image%2Fpng)
