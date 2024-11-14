@@ -50,7 +50,7 @@ hydra -l root -P dictionary -F -V "<ip>" http-get-form '/index.php:page=signin&u
 
 We provide two solutions: a Python and a Bash script.
 
-**script.py | Usage: `python script.py \<ip\>`**
+**script.py | Usage: `python script.py <ip>`**
 
 ```Python
 import requests, sys, subprocess
@@ -108,7 +108,7 @@ if __name__ == "__main__":
 
 It first checks if the provided IP address is reachable by sending a `GET` request. It then downloads a list of common passwords from a specified URL and iterates through each password, attempting to log in with the username `root`. For each password, it constructs a `curl` command to attempt a login on the target site, and pipes the result to `grep` to check if the word "flag" appears in the response, indicating a successful login. If the word "flag" is found, the script prints the valid username, password, and the extracted flag, then stops. If no valid password is found after testing all options, it prints a failure message.
 
-**script.sh | Usage: `./script \<ip\>`**
+**script.sh | Usage: `./script <ip>`**
 
 ```bash
 #!/bin/bash
