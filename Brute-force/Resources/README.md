@@ -1,4 +1,4 @@
-# 💪 Bruteforce
+# 💪 Brute-force
 
 ## 📖 Definition
 
@@ -161,3 +161,13 @@ Many defensive measures can be taken, but here are the main ones:
 To better understand the importance to have a stong password, here is a chart to estimate the time it takes a hacker to brute force your password in 2024:
 
 ![](https://images.squarespace-cdn.com/content/5ffe234606e5ec7bfc57a7a3/1719499399309-7FRIR5QNH5P4VHC1AGGP/Hive+Systems+Password+Table+-+2024+Rectangular.png?format=1500w&content-type=image%2Fpng)
+
+## 🧰 Toolbox
+
+- [10 million passwords list](https://raw.githubusercontent.com/danielmiessler/SecLists/refs/heads/master/Passwords/Common-Credentials/10-million-password-list-top-1000000.txt)
+- [Hydra](https://www.kali.org/tools/hydra/)
+
+## 📚 References
+
+- [Brute Force Attack (OWASP)](https://owasp.org/www-community/attacks/Brute_force_attack)
+- [Blocking Brute Force Attacks (OWASP)](https://owasp.org/www-community/controls/Blocking_Brute_Force_Attacks)

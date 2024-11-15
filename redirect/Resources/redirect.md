@@ -1,7 +1,7 @@
 # redirect
 
 1. On the "Home" page, go to the footer
-2. Open the Developper tools (F12)
+2. Open the Developer tools (F12)
 3. Click the "Select" tool and click one of the three socials logos
 4. In the HTML code, modify the `href` attribute by replacing the name of the social network by whatever you want
 5. Click on the logo
