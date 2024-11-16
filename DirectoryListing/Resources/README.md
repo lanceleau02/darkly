@@ -87,11 +87,11 @@ Many defensive measures can be taken, but here are the main ones:
 
 ## 🧰 Toolbox
 
-[Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)
-[Scrapy](https://scrapy.org/)
+- [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)
+- [Scrapy](https://scrapy.org/)
 
 ## 📚 References
 
-[Directory Browsing (ScienceDirect)](https://www.sciencedirect.com/topics/computer-science/directory-browsing#:~:text=Directory%20browsing%20is%20the%20ability,folders%20stored%20on%20the%20server.)
-[Directory Listing (PortSwigger)](https://portswigger.net/kb/issues/00600100_directory-listing)
-[Qu’est ce que le Directory Browsing/Listing ? (IT-Connect)](https://www.it-connect.fr/quest-ce-que-le-directory-browsinglisting/)
+- [Directory Browsing (ScienceDirect)](https://www.sciencedirect.com/topics/computer-science/directory-browsing#:~:text=Directory%20browsing%20is%20the%20ability,folders%20stored%20on%20the%20server.)
+- [Directory Listing (PortSwigger)](https://portswigger.net/kb/issues/00600100_directory-listing)
+- [Qu’est ce que le Directory Browsing/Listing ? (IT-Connect)](https://www.it-connect.fr/quest-ce-que-le-directory-browsinglisting/)
