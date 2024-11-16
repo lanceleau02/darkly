@@ -25,14 +25,14 @@ So, at this point, we can code a little Python script to test all the possibilit
 
 ## 🏁 Flag
 
-**1. The manual way:**
+<u>**The manual way:**</u>
 
 1. Take the passwords list on [this site](https://datanews.levif.be/actualite/le-top-25-des-mots-de-passe-les-plus-courants-et-les-plus-faibles/)
 2. Go on the **Signin** page
 3. In the username field, type whatever you want
 4. In the password field, test all the passwords in the list
 
-**2. Using Hydra:**
+<u>**Using Hydra:**</u>
 
 1. Download and store the dictionary by running:
 

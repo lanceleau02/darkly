@@ -29,15 +29,11 @@ The second line will be useful for an another breach but for now, let's focus on
 
 ## 🏁 Flag
 
-**1. The dumb way:**
+<u>**The dumb way:**</u>
 
 1. Go on `http://<ip>/.hidden`
 2. Browse ALL the directories and download ALL the `README` files you'll find
 3. ...
-
-**2. Using a Python script with Beautiful Soup**
-
-**3. Using a Python script with Scrapy**
 
 ## 💡 Solutions
 

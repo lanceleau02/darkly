@@ -26,7 +26,7 @@ Then, we refreshed the page and got the flag!
 
 ## 🏁 Flag
 
-**1. Using the console:**
+<u>**Using the console:**</u>
 
 1. Open the Developer tools (F12 or Shift + Ctrl + I)
 2. Display the cookie using `document.cookie`
@@ -38,7 +38,7 @@ document.cookie = "I_am_admin=b326b5062b2f0e69046810717534cb09"`
 
 4. Refresh the page
 
-**2. Using the Application tab:**
+<u>**Using the Application tab:**</u>
 
 1. Open the Developer tools (F12 or Shift + Ctrl + I)
 2. Go on the "Application" tab
@@ -46,7 +46,7 @@ document.cookie = "I_am_admin=b326b5062b2f0e69046810717534cb09"`
 4. Double-click on the value and paste `b326b5062b2f0e69046810717534cb09`
 5. Refresh the page
 
-**3. Using a browser extension:**
+<u>**Using a browser extension:**</u>
 
 1. Download [Cookie-Editor](https://cookie-editor.com/)
 2. Go on the BornToSec website
