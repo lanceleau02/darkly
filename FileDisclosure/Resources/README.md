@@ -49,3 +49,5 @@ Many defensive measures can be taken, but here are the main ones:
 - [dCode MD5 Decrypter](https://www.dcode.fr/md5-hash)
 
 ## 📚 References
+
+- [htpasswd - Manage user files for basic authentication](https://httpd.apache.org/docs/2.4/programs/htpasswd.html)
