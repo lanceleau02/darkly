@@ -1,4 +1,4 @@
-# 🗂️ Local File Inclusion
+# 🗂️ Local File Inclusion (LFI)
 
 ## 📖 Definition
 
