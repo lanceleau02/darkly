@@ -33,7 +33,7 @@ Then, we refreshed the page and got the flag!
 3. Change the cookie with (use `allow pasting` if needed):
 
 ```JavaScript
-document.cookie = "I_am_admin=b326b5062b2f0e69046810717534cb09"` 
+document.cookie = "I_am_admin=b326b5062b2f0e69046810717534cb09"
 ```
 
 4. Refresh the page
