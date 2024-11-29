@@ -63,7 +63,7 @@ def main():
 	if len(sys.argv) != 2:
 		print("Usage: python script.py <ip>")
 		sys.exit(1)
-	directory_listing("http://"Validate File Contents and Types + sys.argv[1] + "/.hidden")
+	directory_listing("http://" + sys.argv[1] + "/.hidden")
 
 if __name__ == "__main__":
 	main()
