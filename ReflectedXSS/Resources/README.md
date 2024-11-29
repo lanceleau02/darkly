@@ -1,10 +1,18 @@
-# ❌ Cross Site Scripting (XSS)
+# ❌ Reflected XSS
 
 ## 📖 Definition
 
-**Cross-Site Scripting (XSS)** attacks are a type of injection, in which malicious scripts are injected into otherwise benign and trusted websites. XSS attacks occur when an attacker uses a web application to send malicious code, generally in the form of a browser side script, to a different end user. Flaws that allow these attacks to succeed are quite widespread and occur anywhere a web application uses input from a user within the output it generates without validating or encoding it.
+**Cross-Site Scripting (XSS)** is a type of security vulnerability that occurs when an attacker is able to inject malicious scripts (typically JavaScript) into a web page viewed by other users. This can allow the attacker to execute arbitrary code in the context of a user's browser, steal session cookies, deface content, or perform other malicious actions.
 
-An attacker can use XSS to send a malicious script to an unsuspecting user. The end user’s browser has no way to know that the script should not be trusted, and will execute the script. Because it thinks the script came from a trusted source, the malicious script can access any cookies, session tokens, or other sensitive information retained by the browser and used with that site. These scripts can even rewrite the content of the HTML page. For more details on the different types of XSS flaws, see: [Types of Cross-Site Scripting](https://owasp.org/www-community/Types_of_Cross-Site_Scripting).
+**Types of XSS:**
+
+1. **Stored XSS:** The malicious script is stored on the server (e.g., in a database) and then executed when other users load the page containing that script.
+
+2. **Reflected XSS:** The script is reflected off the server, typically through user input, without being stored.
+
+3. **DOM-based XSS:** The vulnerability exists in the client-side code, and the attack is executed through manipulation of the DOM by the attacker.
+
+This breach is a **Reflected XSS** one, since the input (e.g., the word "script") is immediately reflected back in the response.
 
 ## 🔍 Discovery
 

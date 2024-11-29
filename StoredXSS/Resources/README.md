@@ -1,4 +1,4 @@
-# ❓ Feedback
+# ❓ StoredXSS
 
 ## 📖 Definition
 
