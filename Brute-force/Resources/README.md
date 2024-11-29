@@ -116,9 +116,9 @@ It first checks if the provided IP address is reachable by sending a `GET` reque
 if [ "$#" -ne 1 ]; then
 	echo "Usage: ./script.sh <ip>"
 	exit 1
+else
+    ip=$1
 fi
-
-ip=$1
 
 function exec_hydra {
 	curl -o dictionary https://raw.githubusercontent.com/danielmiessler/SecLists/refs/heads/master/Passwords/Common-Credentials/10-million-password-list-top-1000000.txt
